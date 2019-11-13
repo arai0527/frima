@@ -58,7 +58,7 @@
                             @if($errors->has('address'))<span class="float-left" style="color:#ff0000;">{{ $errors->first('address') }}</span>@endif
                         </div>
                         <div class="form-group col-auto">
-                            <button type="submit" class="btn-danger btn-block p-3 mt-5">出品する</button>
+                            <button type="submit" class="btn-danger btn-block p-3 mt-5">次へ進む</button>
                         </div>
                     </form>
                 </div>
