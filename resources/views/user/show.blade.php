@@ -23,7 +23,7 @@
         </div>
         <div class="row">
             @foreach ($user->product as $value)
-                <a href="/{{}}" class="card m-3 shadow-sm" style="width: 13rem;">
+                <a href="/{{ $value['id'] }}" class="card m-3 shadow-sm" style="width: 13rem;">
                     <img class="card-img-top" src="/storage/{{ $value->image[0]->name }}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{ $value['name'] }}</h5>
