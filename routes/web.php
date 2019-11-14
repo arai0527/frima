@@ -37,7 +37,8 @@ Route::get('/signup/complete', 'SignupController@complete');
 Route::get('/login_auth', 'LoginController@index')->name('login_auth');
 Route::post('/login_auth', 'LoginController@post')->name('login_auth');
 
-Route::get('/mypage', 'MypageController@index')->name('mypage');
+Route::get('/profile', 'UserController@edit')->name('profile');
+Route::post('/profile', 'UserController@update')->name('update_profile');
 
 Route::get('/sell', 'SellController@index')->name('sell');
 Route::post('/sell', 'SellController@store')->name('sell');

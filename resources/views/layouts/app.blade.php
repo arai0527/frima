@@ -59,7 +59,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('mypage') }}">
+                                    <a class="dropdown-item" href="{{ route('user.user', ['user' => Auth::user()->id]) }}">
                                         {{ __('マイページ') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

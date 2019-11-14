@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Product;
 use App\Models\Image;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -83,6 +84,13 @@ class Utility
         return $products;
     }
 
+    public static function getProductCountByUser($user_id)
+    {
+        $ProductCount = Product::where('user_id', $user_id)
+                                ->count();
+        return $ProductCount;
+    }
+
     /*
     *
     *@return boolean 
@@ -131,7 +139,7 @@ class Utility
         //imagesテーブルにインサートしつつIDを取得
         $image = new image();
         $image_id = $image->insertGetId([
-                'name' => 'TEST',
+                'name' => hash('sha256', $array->photo->getClientOriginalName()) . '.jpg',
                 'order' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -146,5 +154,20 @@ class Utility
             ]], false);
 
         return true;
+    }
+
+    /*
+    *
+    *ログイン前提
+    *
+    */
+    public static function updateUser($req)
+    {
+        User::where('id', Auth::user()->id)
+            ->update([
+                'name' => $req->name,
+                'text' => $req->text,
+                'updated_at' => now(),
+            ]);
     }
 }
